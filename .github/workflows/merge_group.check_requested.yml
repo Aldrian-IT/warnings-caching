@@ -5,7 +5,7 @@ name: merge_group.checks_requested
 
 on:
   pull_request:
-    types: [opened, synchronize, edited, ready_for_review]
+    types: [opened, synchronize, edited, ready_for_review, closed]
   merge_group:
     types: [checks_requested]
 
@@ -24,8 +24,8 @@ jobs:
       run: |
         echo action ${{ github.event.action }}
         echo merge_commit_sha ${{ github.event.pull_request.merge_commit_sha }}
-        echo head_sha ${{ github.event.merge_group.head_sha }}
-        echo base_sha ${{ github.event.merge_group.base_sha }}
+        echo head.sha ${{ github.event.pull_request.head.sha }}
+        echo base.sha ${{ github.event.pull_request.base.sha }}
         echo head_commit.id ${{ github.event.merge_group.head_commit.id }}
         false || true
 

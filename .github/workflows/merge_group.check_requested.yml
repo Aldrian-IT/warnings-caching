@@ -22,6 +22,7 @@ jobs:
 
     - name: build
       run: |
+        echo action ${{ github.event.action }}
         echo head_sha ${{ github.event.merge_group.head_sha }}
         echo base_sha ${{ github.event.merge_group.base_sha }}
         echo head_commit.id ${{ github.event.merge_group.head_commit.id }}

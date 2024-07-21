@@ -20,4 +20,4 @@ jobs:
         path: warnings-cache
         key: ${{ github.event.pull_request.base.ref }}-${{ runner.os }}-results
     - name: Build
-      run: echo github.event.pull_request.changed_files: "${{ github.event.pull_request.changed_files }}"
+      run: "echo github.event.pull_request.changed_files: ${{ github.event.pull_request.changed_files }}"

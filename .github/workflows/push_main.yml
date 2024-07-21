@@ -21,11 +21,11 @@ jobs:
     - name: build
       run: |
         mkdir -pv warnings-cache
-        echo `date +"%Y-%m-%dT%H:%M:%S%z"` ${{ github.event.pull_request.head.sha }} | tee -a warnings-cache/build.txt
+        echo `date +"%Y-%m-%dT%H:%M:%S%z"` ${{ github.event.push.head_commit.id }} | tee -a warnings-cache/build.txt
         false || true
 
     - name: save cache with warning counts
       uses: actions/cache/save@v4.0.2
       with:
         path: warnings-cache
-        key: ${{ github.event.push.after }}-warnings-cache
+        key: ${{ github.event.push.head_commit.id }}-warnings-cache

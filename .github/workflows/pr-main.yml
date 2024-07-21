@@ -20,6 +20,4 @@ jobs:
         path: warnings-cache
         key: ${{ github.event.pull_request.base.ref }}-${{ runner.os }}-results
     - name: Build
-      run: echo swift build -v
-    - name: Run tests
-      run: echo swift test -v
+      run: echo github.event.pull_request.changed_files: "${{ github.event.pull_request.changed_files }}"

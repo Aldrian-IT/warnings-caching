@@ -27,7 +27,7 @@ jobs:
         echo head_sha ${{ github.event.merge_group.head_sha }}
         echo base_sha ${{ github.event.merge_group.base_sha }}
         echo head_commit.id ${{ github.event.merge_group.head_commit.id }}
-        false
+        false || true
 
     - name: cache warnings count
       uses: actions/cache/save@v4.0.2

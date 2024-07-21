@@ -18,11 +18,11 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: sleep 5
-      if: github.event.action != closed
+      if: github.event.action != 'closed'
       run: sleep 5
 
     - name: sleep 50
-      if: github.event.action == closed
+      if: github.event.action == 'closed'
       run: sleep 5
 
     - name: build

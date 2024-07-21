@@ -6,7 +6,7 @@ name: pr-main
 on:
   pull_request:
     branches: [ "main" ]
-    types: [closed]
+    types: [opened, closed]
 
 jobs:
   build:

@@ -22,9 +22,3 @@ jobs:
       with:
         path: warnings-cache
         key: ${{ github.event.pull_request.base.sha }}-warnings-cache
-
-    - name: save cache with warning counts from head commit
-      uses: actions/cache/save@v4.0.2
-      with:
-        path: warnings-cache
-        key: ${{ github.event.pull_request.head.sha }}-warnings-cache

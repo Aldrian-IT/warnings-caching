@@ -4,9 +4,8 @@
 name: pr-main
 
 on:
-  pull_request:
-    branches: [ "main" ]
-    types: [opened, closed]
+  merge_group:
+    types: [checks_requested]
 
 jobs:
   build:
@@ -15,12 +14,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Cache
-      uses: actions/cache/restore@v4.0.2
+
+    - name: build
+      run: |
+        echo head_sha ${{ github.event.merge_group.head_sha }}
+        echo base_sha ${{ github.event.merge_group.base_sha }}
+        echo head_commit.id ${{ github.event.merge_group.head_commit.id }}
+        false
+
+    - name: cache warnings count
+      uses: actions/cache/save@v4.0.2
       with:
         path: warnings-cache
         key: ${{ github.event.base.ref }}-${{ runner.os }}-results
-    - name: action
-      env:
-        ACTION: ${{ github.event.action }}
-      run: echo github.event.action ${{ env.ACTION }}

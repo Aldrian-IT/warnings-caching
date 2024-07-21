@@ -23,4 +23,4 @@ jobs:
     - name: action
       env:
         SERVER: production
-      run: echo github.event.pull_request.action ${{ github.event.pull_request.action }} ${{ SERVER }}
+      run: echo github.event.pull_request.action ${{ github.event.pull_request.action }} ${{ env.SERVER }}

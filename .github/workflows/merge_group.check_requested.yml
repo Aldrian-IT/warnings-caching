@@ -23,20 +23,6 @@ jobs:
         path: warnings-cache
         key: ${{ github.event.pull_request.base.sha }}-warnings-cache
 
-    - name: build
-      env:
-        GH_TOKEN: ${{ github.token }}
-      run: |
-        mkdir -pv warnings-cache
-        echo `date +"%Y-%m-%dT%H:%M:%S%z"` ${{ github.event.pull_request.head.sha }} | tee -a warnings-cache/build.txt
-        false || true
-        gh api \
-          --method PATCH \
-          -H "Accept: application/vnd.github+json" \
-          -H "X-GitHub-Api-Version: 2022-11-28" \
-          /repos/Aldrian-IT/warnings-caching/properties/values \
-          -f "properties[][property_name]=environment" -f "properties[][value]=production" -f "properties[][property_name]=service" -f "properties[][value]=web" -f "properties[][property_name]=team" -f "properties[][value]=octocat"
-
     - name: save cache with warning counts from head commit
       uses: actions/cache/save@v4.0.2
       with:

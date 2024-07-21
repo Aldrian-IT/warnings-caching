@@ -19,4 +19,4 @@ jobs:
         path: warnings-cache
         key: ${{ github.event.push.after }}-${{ runner.os }}-results
     - name: Build
-      run: echo github.event.push.after: "${{ github.event.push.after }}"
+      run: "echo github.event.push.after: ${{ github.event.push.after }}"

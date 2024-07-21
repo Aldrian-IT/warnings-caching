@@ -26,6 +26,6 @@ jobs:
     - name: compare
       run: |
         mkdir -pv warnings-cache
-        echo `date +"%Y-%m-%dT%H:%M:%S%z"` ${{ github.event.head_commit.id }} | tee -a warnings-cache/build.txt
+        echo `date +"%Y-%m-%dT%H:%M:%S%z"` ${{ github.event.pull_request.ref.sha }} | tee -a warnings-cache/build.txt
         cat warnings-cache/build.txt
         false # || true

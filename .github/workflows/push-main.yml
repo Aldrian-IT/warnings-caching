@@ -6,8 +6,6 @@ name: Swift
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
   build:
@@ -16,12 +14,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Cache
-      uses: actions/cache/restore@v4.0.2
+    - uses: actions/cache/save@v4.0.2
       with:
         path: warnings-cache
-        key: ${{ github.event.pull_request.base.ref }}-${{ runner.os }}-results
+        key: ${{ github.event.push.after }}-${{ runner.os }}-results
     - name: Build
-      run: echo swift build -v
-    - name: Run tests
-      run: echo swift test -v
+      run: echo github.event.push.after: ${{ github.event.push.after }}

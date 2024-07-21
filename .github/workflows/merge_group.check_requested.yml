@@ -24,6 +24,8 @@ jobs:
         key: ${{ github.event.pull_request.base.sha }}-warnings-cache
 
     - name: build
+      env:
+        GH_TOKEN: ${{ github.token }}
       run: |
         mkdir -pv warnings-cache
         echo `date +"%Y-%m-%dT%H:%M:%S%z"` ${{ github.event.pull_request.head.sha }} | tee -a warnings-cache/build.txt

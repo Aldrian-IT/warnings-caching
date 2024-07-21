@@ -22,6 +22,5 @@ jobs:
         key: ${{ github.event.pull_request.base.ref }}-${{ runner.os }}-results
     - name: action
       env:
-        SERVER: production
-        ACTION: ${{ github.event.pull_request.action }}
-      run: echo github.event.pull_request.action ${{ env.ACTION }} ${{ env.SERVER }}
+        ACTION: ${{ github.event.action }}
+      run: echo github.event.pull_request.action ${{ env.ACTION }}

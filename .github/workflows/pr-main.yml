@@ -21,4 +21,6 @@ jobs:
         path: warnings-cache
         key: ${{ github.event.pull_request.base.ref }}-${{ runner.os }}-results
     - name: action
-      run: "echo github.event.pull_request.action: ${{ github.event.pull_request.action }}"
+      env:
+        SERVER: production
+      run: echo github.event.pull_request.action ${{ github.event.pull_request.action }} ${{ env.SERVER }}

@@ -15,6 +15,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: sleep
+      run: sleep 30
+
     - name: build
       run: |
         echo head_sha ${{ github.event.merge_group.head_sha }}

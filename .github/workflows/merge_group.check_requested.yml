@@ -27,6 +27,7 @@ jobs:
           GITHUB_EVENT_NAME: 'pull_request_fake'
         run: |
           echo "The GITHUB_REPOSITORY is $GITHUB_REPOSITORY"
+          export GITHUB_EVENT_NAME='fake-pr'
           echo "The GITHUB_EVENT_NAME is $GITHUB_EVENT_NAME"
           echo "The GITHUB_EVENT_PATH is $GITHUB_EVENT_PATH"
           cat "$GITHUB_EVENT_PATH"

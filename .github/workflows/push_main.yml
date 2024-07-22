@@ -28,7 +28,7 @@ jobs:
         false # || true
 
     - name: save cache with warning counts
-      if: ${{ always() && github.event.action == 'push' }}
+      if: ${{ !cancelled() }}
       uses: actions/cache/save@v4.0.2
       with:
         path: warnings-cache

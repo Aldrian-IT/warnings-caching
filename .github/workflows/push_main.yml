@@ -20,10 +20,10 @@ jobs:
           cat "$GITHUB_EVENT_PATH"
   TMP0:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_EVENT_NAME: 'pull_request'
     steps:
       - name: Prepare for tricking Danger
+        env:
+          GITHUB_EVENT_NAME: 'pull_request'
         run: |
           echo "The GITHUB_REPOSITORY is $GITHUB_REPOSITORY"
           echo "The GITHUB_EVENT_NAME is $GITHUB_EVENT_NAME"

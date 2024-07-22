@@ -1,7 +1,4 @@
-# When a PR is squash-merged a new commit (with new sha) is created.
-# The last successful run of the PR cached the number of warnings for each
-# modules under the head commit's sha.
-# This workflow reads the cache and stores it under the new commit's sha.
+# This workflow runs all tests and caches the number of warnings.
 
 name: push_main
 
@@ -18,7 +15,7 @@ jobs:
 
     steps:
 
-    - name: restore cache so that in case of a failure the previous warning count isn't lost
+    - name: restore cache so that in case of a failure in a project/package the previous warning count isn't lost
       uses: actions/cache/restore@v4.0.2
       with:
         path: warnings-cache

@@ -9,6 +9,15 @@ on:
       - 'main'
 
 jobs:
+  TMP:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare for tricking Danger
+        run: |
+          echo "The GITHUB_REPOSITORY is $GITHUB_REPOSITORY"
+          echo "The GITHUB_EVENT_PATH is $GITHUB_EVENT_PATH"
+          cat "$GITHUB_EVENT_PATH"
+
   build:
 
     runs-on: ubuntu-latest

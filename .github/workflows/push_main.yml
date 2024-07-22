@@ -18,14 +18,21 @@ jobs:
 
     steps:
 
+    - name: restore cache so that in case of a failure the previous warning count isn't lost
+      uses: actions/cache/restore@v4.0.2
+      with:
+        path: warnings-cache
+        key: ${{ github.event.before }}-warnings-cache
+
     - name: build
       run: |
         sleep 15
         mkdir -pv warnings-cache
         echo `date +"%Y-%m-%dT%H:%M:%S%z"` ${{ github.event.head_commit.id }} | tee -a warnings-cache/build.txt
-        false || true
+        false # || true
 
     - name: save cache with warning counts
+      if: always()
       uses: actions/cache/save@v4.0.2
       with:
         path: warnings-cache

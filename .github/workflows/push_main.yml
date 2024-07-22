@@ -15,6 +15,18 @@ jobs:
       - name: Prepare for tricking Danger
         run: |
           echo "The GITHUB_REPOSITORY is $GITHUB_REPOSITORY"
+          echo "The GITHUB_EVENT_NAME is $GITHUB_EVENT_NAME"
+          echo "The GITHUB_EVENT_PATH is $GITHUB_EVENT_PATH"
+          cat "$GITHUB_EVENT_PATH"
+  TMP0:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_EVENT_NAME: 'pull_request'
+    steps:
+      - name: Prepare for tricking Danger
+        run: |
+          echo "The GITHUB_REPOSITORY is $GITHUB_REPOSITORY"
+          echo "The GITHUB_EVENT_NAME is $GITHUB_EVENT_NAME"
           echo "The GITHUB_EVENT_PATH is $GITHUB_EVENT_PATH"
           cat "$GITHUB_EVENT_PATH"
 

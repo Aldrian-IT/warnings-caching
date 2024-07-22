@@ -29,3 +29,10 @@ jobs:
         echo `date +"%Y-%m-%dT%H:%M:%S%z"` ${{ github.event.pull_request.head.sha }} >> warnings-cache/build.txt
         cat warnings-cache/build.txt
         false || true
+
+    - name: save cache with warning counts
+      if: ${{ !cancelled() }}
+      uses: actions/cache/save@v4.0.2
+      with:
+        path: warnings-cache
+        key: ${{ github.event.head_commit.id }}-warnings-cache

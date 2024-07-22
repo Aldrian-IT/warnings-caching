@@ -25,13 +25,14 @@ jobs:
 
     - name: compare
       run: |
+        echo action ${{ github.event.action }}
         mkdir -pv warnings-cache
         echo `date +"%Y-%m-%dT%H:%M:%S%z"` ${{ github.event.pull_request.head.sha }} >> warnings-cache/build.txt
         cat warnings-cache/build.txt
         false || true
 
     - name: save cache with warning counts
-      if: ${{ !cancelled() }}
+      if: ${{ !cancelled() && github.event.action == 'push' }}
       uses: actions/cache/save@v4.0.2
       with:
         path: warnings-cache
